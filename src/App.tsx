@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Event from './components/Event'
+
+import {IEvent} from './Events' 
+
+const data: IEvent[] = [{
+            id: 1,
+            name: "Bilkrockar",
+            joined: true,
+            location: "Angered",
+            time: 1644847298,
+            comments: ["420 blz", "44"],
+        },
+        {
+            id: 2,
+            name: "Dreamhack",
+            joined: false,
+            location: "Orten",
+            time: 1644847298,
+            comments: ["420 blz", "44"],
+        },
+        {
+            id: 3,
+            name: "Snusträff",
+            joined: false,
+            location: "Luleå",
+            time: 1644847298,
+            comments: ["420 blz", "44"],
+        },
+    ];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    const [events, setEvents] = useState<IEvent[]>(data)
+
+    return (
+    <div>
+      {events.map((event, index)=>{
+        return(
+          <Event key={index} event={event}/>
+        )
+      })}
     </div>
-  );
+    );
 }
 
 export default App;
