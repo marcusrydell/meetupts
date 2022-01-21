@@ -10,7 +10,7 @@ const data: IEvent[] = [
         name: "Bilkrockar",
         joined: true,
         location: "Angered",
-        time: 1644847298,
+        time: '2022-02-14',
         comments: ["420 blz", "44"],
     },
     {
@@ -18,7 +18,7 @@ const data: IEvent[] = [
         name: "Dreamhack",
         joined: false,
         location: "Orten",
-        time: 1644847298,
+        time: '2022-12-14',
         comments: ["420 blz", "44"],
     },
     {
@@ -26,7 +26,7 @@ const data: IEvent[] = [
         name: "Snusträff",
         joined: false,
         location: "Luleå",
-        time: 1644847298,
+        time: '2022-05-14',
         comments: ["420 blz", "44"],
     },
 ];

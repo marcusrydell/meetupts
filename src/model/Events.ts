@@ -3,6 +3,6 @@
     name: string, 
     joined: boolean,
     location: string,
-    time: number, 
+    time: string, 
     comments: string[]
   }
