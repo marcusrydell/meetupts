@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Event from './components/Event'
 
-import {IEvent} from './Events' 
+import {IEvent} from './model/Events' 
 
 const data: IEvent[] = [{
             id: 1,
@@ -34,9 +34,9 @@ function App() {
 
     return (
     <div>
-      {events.map((event, index)=>{
+      {events.map((event)=>{
         return(
-          <Event key={index} event={event}/>
+          <Event key={event.id} event={event}/>
         )
       })}
     </div>

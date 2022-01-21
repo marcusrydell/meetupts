@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 
 
-function Event(props: any) {
+
+function Event({event}: any): JSX.Element {
     // const [date, setDate] = useState(
     //     new Date(props.data.time * 1000).toLocaleDateString("sv")
     // );
 
     return (
         <div>
-            {props.event.name} 
-            {props.event.location}
+            {event.name} 
+            {event.location}
         </div>
     );
 }
