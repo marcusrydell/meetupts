@@ -1,0 +1,16 @@
+.eventContainer {
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.eventText {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
