@@ -1,47 +1,80 @@
 import { useState } from "react";
 import Event from "./components/Event";
 import style from "./styles/App.module.css";
-
 import { IEvent } from "./model/Events";
+import Modal from './components/Modal';
 
 const data: IEvent[] = [
-    {
-        id: 1,
-        name: "Bilkrockar",
-        joined: true,
-        location: "Angered",
-        time: '2022-02-14',
-        comments: ["420 blz", "44"],
-    },
-    {
-        id: 2,
-        name: "Dreamhack",
-        joined: false,
-        location: "Orten",
-        time: '2022-12-14',
-        comments: ["420 blz", "44"],
-    },
-    {
-        id: 3,
-        name: "Snusträff",
-        joined: false,
-        location: "Luleå",
-        time: '2022-05-14',
-        comments: ["420 blz", "44"],
-    },
+	{
+		id: 1,
+		name: "Bilkrockar",
+		joined: true,
+		location: "Angered",
+		time: '2022-02-14',
+		comments: ["420 blz", "44"],
+	},
+	{
+		id: 2,
+		name: "Dreamhack",
+		joined: false,
+		location: "Orten",
+		time: '2022-12-14',
+		comments: ["420 blz", "44"],
+	},
+	{
+		id: 3,
+		name: "Snusträff",
+		joined: false,
+		location: "Luleå",
+		time: '2022-05-14',
+		comments: ["420 blz", "44"],
+	},
 ];
 
-function App() {
-    const [events, setEvents] = useState<IEvent[]>(data);
 
-    return (
-        <div className={style.app}>
-            <h1>Events</h1>
-            {events.map((event) => {
-                return <Event key={event.id} event={event} />;
-            })}
-        </div>
-    );
+function App() {
+	const [events, setEvents] = useState<IEvent[]>(data);
+	const [modal, setModal] = useState({});
+	const [showModal, setShowModal] = useState(false);
+
+	function canceled() {
+		setModal({})
+		setShowModal(false);
+	}
+
+	function newModal(event: object) {
+		console.log(event);
+	}
+
+	function fixModal(id: number) {
+
+		let obj : any = {};
+
+
+
+		const index = events.findIndex((item: any) => item.id === id);
+		const event = events[index];
+		setModal(event)
+		//console.log(index);
+
+		setShowModal(true);
+
+        //setModal(events[events.findIndex((item: object) => item.id === id)]);
+    }
+
+	return (
+		<div className={style.app}>
+			{!!showModal && <Modal data={modal} canceled={canceled} />}
+			<h1>Events</h1>
+			{events.map((event) => {
+				return (
+					<div key={event.id} onClick={() => fixModal(event.id)}>
+						<Event event={event} />
+					</div>
+				);
+			})}
+		</div>
+	);
 }
 
 export default App;
