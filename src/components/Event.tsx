@@ -1,9 +1,9 @@
 import style from "../styles/Event.module.css";
 import { useState } from "react";
 import CustomModal from "./CustomModal";
-import { Segment } from "semantic-ui-react";
+import { Segment, Button } from "semantic-ui-react";
 
-function Event({ event }: any): JSX.Element {
+function Event({ event, updateParent }: any): JSX.Element {
 	const [showModal, setShowModal] = useState(false);
 
 	function test() {
@@ -24,7 +24,12 @@ function Event({ event }: any): JSX.Element {
 			<div className={style.eventText}>
 				<p>När: {event.time}</p>
 			</div>
-			{showModal && <CustomModal data-testid="modal" />}
+			{event.joined &&
+				<Button fluid color="red" onClick={() => updateParent(event.id)}>Leave</Button>
+			}
+			{!event.joined &&
+				<Button fluid color="green" onClick={() => updateParent(event.id)}>Join</Button>
+			}
 		</Segment>
 	);
 }

@@ -62,6 +62,13 @@ function App() {
         //setModal(events[events.findIndex((item: object) => item.id === id)]);
     }
 
+	function eventHasUpdated(id: number) {
+        const moddedEvents = [...events];
+        moddedEvents[events.findIndex((item) => item.id === id)].joined =
+            !moddedEvents[events.findIndex((item) => item.id === id)].joined;
+        setEvents([...events]);
+    }
+
 	return (
 		<div className={style.app}>
 			{!!showModal && <Modal data={modal} canceled={canceled} />}
@@ -69,7 +76,7 @@ function App() {
 			{events.map((event) => {
 				return (
 					<div key={event.id} onClick={() => fixModal(event.id)}>
-						<Event event={event} />
+						<Event event={event} updateParent={eventHasUpdated}/>
 					</div>
 				);
 			})}
