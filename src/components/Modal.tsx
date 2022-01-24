@@ -9,18 +9,6 @@ function Modals(props: any): JSX.Element {
 	const [inputText, setInputText] = useState('')
 	//const { events, setEvents } = useContext(eventsCtx);
 
-	/*function addComment(id: number){
-		//make a copy of events
-		const moddedEvents =[...events]
-		//modify copied array with new comment
-		moddedEvents.find(x=> x.id===id).comments.push(inputText)
-	    
-		//update events
-		setEvents([...moddedEvents])
-
-		//reset input field
-		setInputText('')
-	}*/
 
 	return (
 		<Modal

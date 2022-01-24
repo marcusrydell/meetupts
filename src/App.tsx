@@ -3,7 +3,7 @@ import Event from "./components/Event";
 import style from "./styles/App.module.css";
 import { IEvent } from "./model/Events";
 import Modal from './components/Modal';
-
+import { Context, ContextProvider } from "./context/Context";
 const data: IEvent[] = [
 	{
 		id: 1,
@@ -71,6 +71,7 @@ function App() {
     }
 
 	return (
+		<ContextProvider>
 		<div className={style.app}>
 			{!!showModal && <Modal data={modal} canceled={canceled} />}
 			<h1>Events</h1>
@@ -82,6 +83,7 @@ function App() {
 				);
 			})}
 		</div>
+		</ContextProvider>
 	);
 }
 
