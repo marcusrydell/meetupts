@@ -46,8 +46,8 @@ function App() {
 		console.log(event);
 	}
 
-	function fixModal(id: number) {
-
+	function fixModal(id: number, e: any) {
+		if(e.target.nodeName == 'BUTTON') return;
 		let obj : any = {};
 
 
@@ -63,6 +63,7 @@ function App() {
     }
 
 	function eventHasUpdated(id: number) {
+
         const moddedEvents = [...events];
         moddedEvents[events.findIndex((item) => item.id === id)].joined =
             !moddedEvents[events.findIndex((item) => item.id === id)].joined;
@@ -75,7 +76,7 @@ function App() {
 			<h1>Events</h1>
 			{events.map((event) => {
 				return (
-					<div key={event.id} onClick={() => fixModal(event.id)}>
+					<div key={event.id} onClick={(e) => fixModal(event.id,e)}>
 						<Event event={event} updateParent={eventHasUpdated}/>
 					</div>
 				);
