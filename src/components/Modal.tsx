@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { IEvent } from "../model/Events";
-import { modalCtx } from "../context/Context";
+import { context } from "../context/context";
 import { Modal, Segment } from "semantic-ui-react";
 
 interface Props {
@@ -10,9 +10,7 @@ interface Props {
 function Modals({ event }: Props): JSX.Element {
     const [comments, setComments] = useState(event.comments); //Get from props
     const [inputText, setInputText] = useState("");
-    const { setShowModal } = useContext(modalCtx);
-
-    console.log("snopp", event);
+    const { setShowModal } = useContext(context);
 
     return (
         <Modal
