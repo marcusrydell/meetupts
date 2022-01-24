@@ -5,33 +5,6 @@ import { IEvent } from "./model/Events";
 import Modal from "./components/Modal";
 import { context } from "./context/context";
 
-const data: IEvent[] = [
-    {
-        id: 1,
-        name: "Bilkrockar",
-        joined: true,
-        location: "Angered",
-        time: "2022-02-14",
-        comments: ["420 blz", "44"],
-    },
-    {
-        id: 2,
-        name: "Dreamhack",
-        joined: false,
-        location: "Orten",
-        time: "2022-12-14",
-        comments: ["420 blz", "44"],
-    },
-    {
-        id: 3,
-        name: "Snusträff",
-        joined: false,
-        location: "Luleå",
-        time: "2022-05-14",
-        comments: ["420 blz", "44"],
-    },
-];
-
 function App() {
     const { events, setEvents } = useContext(context);
     const [modal, setModal] = useState<IEvent[]>([]);

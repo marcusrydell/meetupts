@@ -9,6 +9,7 @@ interface Props {
 
 function Modals({ event }: Props): JSX.Element {
     const [comments, setComments] = useState(event.comments); //Get from props
+
     const [inputText, setInputText] = useState("");
     const { setShowModal } = useContext(context);
 
