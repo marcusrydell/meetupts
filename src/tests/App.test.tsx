@@ -4,6 +4,9 @@ import Event from "../components/Event";
 import Modal from "../components/Modal";
 import { IEvent } from "../model/Events";
 
+// User Story
+// Som användare vill jag se möten i ordning från det som är närmast i datum
+
 describe("App Component", () => {
     it("renders without crashing", () => {
         render(<App />);
