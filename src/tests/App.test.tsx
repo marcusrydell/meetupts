@@ -1,7 +1,10 @@
 import { render, screen } from "@testing-library/react";
+import App from "../App";
 
 describe("App Component", () => {
-    // renders without crashing
+    it("renders without crashing", () => {
+        render(<App />);
+    });
     // renders an H1 with the text "Events"
     // renders the Event component without crashing
     // it("modal is closed on render", () => {
