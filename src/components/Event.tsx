@@ -1,7 +1,9 @@
 import style from "../styles/Event.module.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CustomModal from "./CustomModal";
 import { Segment, Button } from "semantic-ui-react";
+
+import { Context } from "../context/Context";
 
 function Event({ event, updateParent }: any): JSX.Element {
     const [showModal, setShowModal] = useState(false);

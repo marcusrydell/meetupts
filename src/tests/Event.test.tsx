@@ -49,5 +49,6 @@ describe("Event component", () => {
         const modal = screen.queryByTestId("modal");
 
         expect(modal).toBeNull();
+
     });
 });

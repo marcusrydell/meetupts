@@ -2,9 +2,14 @@ import { useState } from "react";
 import Event from "./components/Event";
 import style from "./styles/App.module.css";
 import { IEvent } from "./model/Events";
+<<<<<<< HEAD
 import Modal from "./components/Modal";
 import { modalCtx } from "./context/Context";
 
+=======
+import Modal from './components/Modal';
+import { Context, ContextProvider } from "./context/Context";
+>>>>>>> d9be127e18fb247c74f37c74dd351f67f42058de
 const data: IEvent[] = [
     {
         id: 1,
