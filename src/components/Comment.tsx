@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 
 function Event(props: any) {
     const [content, setContent] = useState(props.data); //Get from props

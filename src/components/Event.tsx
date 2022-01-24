@@ -1,17 +1,9 @@
-import style from "../styles/Event.module.css";
-import { useState, useContext } from "react";
-import CustomModal from "./CustomModal";
 import { Segment, Button } from "semantic-ui-react";
-
-import { Context } from "../context/Context";
+import style from "../styles/Event.module.css";
 
 function Event({ event, updateParent }: any): JSX.Element {
-    const [showModal, setShowModal] = useState(false);
-
-    function test() {}
-
     return (
-        <Segment className={style.eventContainer} onClick={test}>
+        <Segment className={style.eventContainer}>
             <h3>{event.name}</h3>
 
             <div className={style.eventText}>

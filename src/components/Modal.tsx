@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { IEvent } from "../model/Events";
 import { modalCtx } from "../context/Context";
 import { Modal, Segment } from "semantic-ui-react";

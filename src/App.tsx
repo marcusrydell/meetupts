@@ -2,14 +2,9 @@ import { useState } from "react";
 import Event from "./components/Event";
 import style from "./styles/App.module.css";
 import { IEvent } from "./model/Events";
-<<<<<<< HEAD
 import Modal from "./components/Modal";
 import { modalCtx } from "./context/Context";
 
-=======
-import Modal from './components/Modal';
-import { Context, ContextProvider } from "./context/Context";
->>>>>>> d9be127e18fb247c74f37c74dd351f67f42058de
 const data: IEvent[] = [
     {
         id: 1,
@@ -42,29 +37,14 @@ function App() {
     const [modal, setModal] = useState<IEvent[]>([]);
     const [showModal, setShowModal] = useState<boolean>(false);
 
-    function canceled() {
-        setModal([]);
-        setShowModal(false);
-    }
-
-    function newModal(event: object) {
-        console.log(event);
-    }
-
     function fixModal(id: number, e: any) {
         if (e.target.nodeName == "BUTTON") return;
-        let obj: any = {};
 
         const index = events.findIndex((item: any) => item.id === id);
         const event = events[index];
-        console.log(event);
 
         setModal([event]);
-        //console.log(index);
-
         setShowModal(true);
-
-        //setModal(events[events.findIndex((item: object) => item.id === id)]);
     }
 
     function eventHasUpdated(id: number) {
@@ -73,8 +53,6 @@ function App() {
             !moddedEvents[events.findIndex((item) => item.id === id)].joined;
         setEvents([...events]);
     }
-
-    console.log(modal[0]);
 
     return (
         <modalCtx.Provider value={{ showModal, setShowModal }}>
