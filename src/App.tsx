@@ -4,7 +4,6 @@ import style from "./styles/App.module.css";
 import { IEvent } from "./model/Events";
 import Modal from "./components/Modal";
 import { context } from "./context/context";
-// import { eventCtx } from "./context/eventsCtx";
 
 const data: IEvent[] = [
     {
@@ -34,18 +33,14 @@ const data: IEvent[] = [
 ];
 
 function App() {
+    const { events, setEvents } = useContext(context);
     const [modal, setModal] = useState<IEvent[]>([]);
     const [showModal, setShowModal] = useState<boolean>(false);
-    const { events, setEvents } = useContext(context);
 
     function fixModal(id: number, e: any) {
         if (e.target.nodeName == "BUTTON") return;
 
-        const index = events.findIndex((item: IEvent) => {
-            console.log("hej", item);
-
-            return item.id === id;
-        });
+        const index = events.findIndex((item: any) => item.id === id);
         const event = events[index];
 
         setModal([event]);
@@ -64,6 +59,7 @@ function App() {
             value={{ showModal, setShowModal, events, setEvents }}
         >
             <div className={style.app}>
+                {!!showModal && <Modal event={modal[0]} />}
                 <h1>Events</h1>
                 {events.map((event) => {
                     return (
@@ -78,7 +74,6 @@ function App() {
                         </div>
                     );
                 })}
-                {showModal && <Modal event={modal[0]} data-testid="modal" />}
             </div>
         </context.Provider>
     );
