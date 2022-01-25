@@ -1,39 +1,38 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Event from "./components/Event";
 import style from "./styles/App.module.css";
 import { IEvent } from "./model/Events";
 import Modal from "./components/Modal";
-import { modalCtx } from "./context/Context";
-
-const data: IEvent[] = [
-    {
-        id: 1,
-        name: "Bilkrockar",
-        joined: true,
-        location: "Angered",
-        time: "2022-02-14",
-        comments: ["420 blz", "44"],
-    },
-    {
-        id: 2,
-        name: "Dreamhack",
-        joined: false,
-        location: "Orten",
-        time: "2022-12-14",
-        comments: ["420 blz", "44"],
-    },
-    {
-        id: 3,
-        name: "Snusträff",
-        joined: false,
-        location: "Luleå",
-        time: "2022-05-14",
-        comments: ["420 blz", "44"],
-    },
-];
+import { context } from "./context/Context";
 
 function App() {
-    const [events, setEvents] = useState<IEvent[]>(data);
+    // const { events, setEvents } = useContext(context);
+    const [events, setEvents] = useState<IEvent[]>([
+        {
+            id: 1,
+            name: "Bilkrockar",
+            joined: true,
+            location: "Angered",
+            time: "2022-01-14",
+            comments: ["Felle Krockar i Angered", "Köpa nya bil"],
+        },
+        {
+            id: 2,
+            name: "Dreamhack",
+            joined: false,
+            location: "Orten",
+            time: "2021-12-14",
+            comments: ["JOlt Cola och svett", "Dataspel"],
+        },
+        {
+            id: 3,
+            name: "Snusträff",
+            joined: false,
+            location: "Luleå",
+            time: "2021-05-14",
+            comments: ["Vilken rolig träff", "Gott med snus"],
+        },
+    ]);
     const [modal, setModal] = useState<IEvent[]>([]);
     const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -55,7 +54,9 @@ function App() {
     }
 
     return (
-        <modalCtx.Provider value={{ showModal, setShowModal }}>
+        <context.Provider
+            value={{ showModal, setShowModal, events, setEvents }}
+        >
             <div className={style.app}>
                 {!!showModal && <Modal event={modal[0]} />}
                 <h1>Events</h1>
@@ -73,7 +74,7 @@ function App() {
                     );
                 })}
             </div>
-        </modalCtx.Provider>
+        </context.Provider>
     );
 }
 

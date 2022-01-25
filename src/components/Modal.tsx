@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import { IEvent } from "../model/Events";
-import { modalCtx } from "../context/Context";
+import { context } from "../context/Context";
 import { Modal, Segment } from "semantic-ui-react";
+import { addSyntheticLeadingComment } from "typescript";
 
 interface Props {
     event: IEvent;
@@ -10,10 +11,15 @@ interface Props {
 function Modals({ event }: Props): JSX.Element {
     const [comments, setComments] = useState(event.comments); //Get from props
     const [inputText, setInputText] = useState("");
-    const { setShowModal } = useContext(modalCtx);
+    const { setShowModal, setEvents, events } = useContext(context);
 
-    console.log("snopp", event);
-
+    function addComment(id: number){
+        const moddedEvents = [...events];
+        const index = moddedEvents.findIndex((item: any) => item.id === id);
+        moddedEvents[index].comments.push(inputText);
+        setEvents(moddedEvents)
+        setInputText('')
+    }
     return (
         <Modal
             size="large"
@@ -21,22 +27,17 @@ function Modals({ event }: Props): JSX.Element {
             open={true}
             className="p-5"
         >
-            <h1 className="text-5xl">Comments</h1>
+            <h1>Comments</h1>
             {comments.map((comment: string, index: number) => {
                 return <Segment key={"comment" + index}>{comment}</Segment>;
             })}
-            <div className="flex w-full justify-center">
+            <div>
                 <input
+                    value={inputText}
                     onChange={(event) => setInputText(event.target.value)}
-                    className="w-2/3 h-10"
                     placeholder="Write a comment"
                 />
-                <button
-                    onClick={() => {}}
-                    className="w-auto bg-blue-300 p-3 rounded"
-                >
-                    Add comment
-                </button>
+                <button onClick={() => {addComment(event.id)}}>Add comment</button>
             </div>
         </Modal>
     );
