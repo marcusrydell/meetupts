@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Event from "./components/Event";
 import style from "./styles/App.module.css";
 import { IEvent } from "./model/Events";
@@ -51,14 +51,32 @@ function App() {
         moddedEvents[events.findIndex((item) => item.id === id)].joined =
             !moddedEvents[events.findIndex((item) => item.id === id)].joined;
         setEvents([...events]);
+
+        const objInLS = JSON.parse(localStorage.getItem("events") || "");
+
+        objInLS[id - 1].joined = !objInLS[id - 1].joined;
+        console.log(objInLS);
+        localStorage.setItem("events", JSON.stringify(objInLS));
     }
+
+    useEffect(() => {
+        const inLS = localStorage.getItem("events");
+
+        if (!inLS) {
+            localStorage.setItem("events", JSON.stringify(events));
+        } else {
+            console.log(inLS);
+
+            setEvents(JSON.parse(inLS));
+        }
+    }, []);
 
     return (
         <context.Provider
             value={{ showModal, setShowModal, events, setEvents }}
         >
             <div className={style.app}>
-                {!!showModal && <Modal event={modal[0]} />}
+                {!!showModal && <Modal id={modal[0].id} />}
                 <h1>Events</h1>
                 {events.map((event) => {
                     return (
