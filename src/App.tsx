@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Event from "./components/Event";
 import style from "./styles/App.module.css";
 import { IEvent } from "./model/Events";
@@ -6,14 +6,13 @@ import Modal from "./components/Modal";
 import { context } from "./context/Context";
 
 function App() {
-    // const { events, setEvents } = useContext(context);
     const [events, setEvents] = useState<IEvent[]>([
         {
             id: 1,
             name: "Bilkrockar",
             joined: true,
             location: "Angered",
-            time: "2022-01-14",
+            time: "2022-03-14",
             comments: ["Felle Krockar i Angered", "Köpa nya bil"],
         },
         {
@@ -21,7 +20,7 @@ function App() {
             name: "Dreamhack",
             joined: false,
             location: "Orten",
-            time: "2021-12-14",
+            time: "2022-02-25",
             comments: ["JOlt Cola och svett", "Dataspel"],
         },
         {
@@ -29,7 +28,7 @@ function App() {
             name: "Snusträff",
             joined: false,
             location: "Luleå",
-            time: "2021-05-14",
+            time: "2022-02-14",
             comments: ["Vilken rolig träff", "Gott med snus"],
         },
     ]);
@@ -55,7 +54,6 @@ function App() {
         const objInLS = JSON.parse(localStorage.getItem("events") || "");
 
         objInLS[id - 1].joined = !objInLS[id - 1].joined;
-        console.log(objInLS);
         localStorage.setItem("events", JSON.stringify(objInLS));
     }
 

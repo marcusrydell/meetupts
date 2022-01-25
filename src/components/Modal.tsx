@@ -16,13 +16,13 @@ function Modals({ id }: Props): JSX.Element {
     const [comments, setComments] = useState(events[id - 1].comments); //Get from props
 
     function addComment(id: number) {
-        console.log(events);
-
         const moddedEvents = [...events];
+
         const index = moddedEvents.findIndex((item: any) => item.id === id);
+
         moddedEvents[index].comments.push(inputText);
+
         localStorage.setItem("events", JSON.stringify(moddedEvents));
-        // setEvents(moddedEvents);
         setComments(moddedEvents[index].comments);
         setInputText("");
     }
