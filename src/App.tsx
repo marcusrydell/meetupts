@@ -3,7 +3,7 @@ import Event from "./components/Event";
 import style from "./styles/App.module.css";
 import { IEvent } from "./model/Events";
 import Modal from "./components/Modal";
-import { context } from "./context/context";
+import { context } from "./context/Context";
 
 function App() {
     // const { events, setEvents } = useContext(context);
