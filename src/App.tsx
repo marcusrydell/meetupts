@@ -4,7 +4,7 @@ import style from "./styles/App.module.css";
 import { IEvent } from "./model/Events";
 import Modal from "./components/Modal";
 import { context } from "./context/Context";
-
+import { Button, Segment } from "semantic-ui-react";
 function App() {
     const [events, setEvents] = useState<IEvent[]>([
         {
@@ -20,7 +20,7 @@ function App() {
             name: "Dreamhack",
             joined: false,
             location: "Orten",
-            time: "2022-02-25",
+            time: "2022-06-25",
             comments: ["JOlt Cola och svett", "Dataspel"],
         },
         {
@@ -28,10 +28,20 @@ function App() {
             name: "Snusträff",
             joined: false,
             location: "Luleå",
-            time: "2022-02-14",
+            time: "2022-05-14",
             comments: ["Vilken rolig träff", "Gott med snus"],
         },
     ]);
+
+    function sortByKey(array: any, key: string){
+        return array.sort(function(a:any,b: any){
+            let x = a[key];
+            let y = b[key];
+            return((x<y) ? -1 : ((x>y)?1 : 0));
+        });
+    }
+    sortByKey(events, 'joined').reverse()
+
     const [modal, setModal] = useState<IEvent[]>([]);
     const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -76,6 +86,8 @@ function App() {
             <div className={style.app}>
                 {!!showModal && <Modal id={modal[0].id} />}
                 <h1>Events</h1>
+
+        
                 {events.map((event) => {
                     return (
                         <div
