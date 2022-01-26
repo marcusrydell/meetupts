@@ -33,14 +33,14 @@ function App() {
         },
     ]);
 
-    function sortByKey(array: any, key: string){
-        return array.sort(function(a:any,b: any){
+    function sortByKey(array: any, key: string) {
+        return array.sort(function (a: any, b: any) {
             let x = a[key];
             let y = b[key];
-            return((x<y) ? -1 : ((x>y)?1 : 0));
+            return x < y ? -1 : x > y ? 1 : 0;
         });
     }
-    sortByKey(events, 'joined').reverse()
+    sortByKey(events, "joined").reverse();
 
     const [modal, setModal] = useState<IEvent[]>([]);
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -73,8 +73,6 @@ function App() {
         if (!inLS) {
             localStorage.setItem("events", JSON.stringify(events));
         } else {
-            console.log(inLS);
-
             setEvents(JSON.parse(inLS));
         }
     }, []);
@@ -87,7 +85,6 @@ function App() {
                 {!!showModal && <Modal id={modal[0].id} />}
                 <h1>Events</h1>
 
-        
                 {events.map((event) => {
                     return (
                         <div

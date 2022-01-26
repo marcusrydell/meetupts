@@ -2,7 +2,7 @@ import { render, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Event from "../components/Event";
 import { IEvent } from "../model/Events";
-import userEvent from '@testing-library/user-event';
+import userEvent from "@testing-library/user-event";
 import App from "../App";
 
 // User Story
@@ -41,26 +41,26 @@ describe("Event component", () => {
         expect(timeEl).toBeInTheDocument();
     });
 
-	it("joins an event and changes the button to say leave", () => {
+    it("joins an event and changes the button to say leave", () => {
         render(<App />);
 
-		userEvent.click(screen.getAllByText('Join')[0]);
+        userEvent.click(screen.getAllByText("Join")[0]);
 
-		const leaveButton = screen.getAllByText('Leave')[1];
+        const leaveButton = screen.getAllByText("Leave")[1];
 
-		expect(leaveButton).toBeInTheDocument();
-	});
+        expect(leaveButton).toBeInTheDocument();
+    });
 
-	it("state persists between reloads", () => {
+    it("state persists between reloads", () => {
         render(<App />);
 
-		userEvent.click(screen.getAllByText('Join')[0]);
+        userEvent.click(screen.getAllByText("Join")[0]);
 
-		render(<App />);
+        render(<App />);
 
-		const leaveButton2 = screen.getAllByText('Leave')[4];
+        const leaveButton2 = screen.getAllByText("Leave")[0];
+        console.log(leaveButton2);
 
-		expect(leaveButton2).toBeInTheDocument();
-	});
-
+        expect(leaveButton2).toBeInTheDocument();
+    });
 });
