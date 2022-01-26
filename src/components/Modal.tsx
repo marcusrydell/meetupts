@@ -13,7 +13,11 @@ function Modals({ id }: Props): JSX.Element {
     const [events, setEvents] = useState<IEvent[]>(
         JSON.parse(localStorage.getItem("events") || "")
     );
-    const [comments, setComments] = useState(events[id - 1].comments); //Get from props
+    const index = events.findIndex(item => {
+        return item.id === id
+    })
+        
+    const [comments, setComments] = useState(events[index].comments); //Get from props
 
     function addComment(id: number) {
         const moddedEvents = [...events];
