@@ -15,5 +15,4 @@ describe("Event component", () => {
         };
         render(<Event event={testData} />);
     });
-
 });
