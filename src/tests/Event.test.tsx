@@ -1,13 +1,9 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Event from "../components/Event";
 import App from "../App";
 import { IEvent } from "../model/Events";
 import userEvent from "@testing-library/user-event";
-
-// User Story
-// SomSom användare vill jag kunna anmäla mig till ett möte.
-// Som användare vill jag kunna avanmäla mig från ett möte
 
 describe("Event component", () => {
     let mockChangeButton: jest.Mock;
@@ -63,6 +59,15 @@ describe("Event component", () => {
 
     it("joins an event and changes the button to say leave", () => {
         render(<App />);
+        const testData: IEvent = {
+            id: 2,
+            name: "Dreamhack",
+            joined: false,
+            location: "GBG",
+            time: "2022-02-14",
+            comments: ["kommentar", "en till"],
+        };
+        render(<Event event={testData} />);
 
         userEvent.click(screen.getAllByText("Join")[0]);
 
@@ -72,11 +77,20 @@ describe("Event component", () => {
     });
 
     it("state persists between reloads", () => {
+        const testData: IEvent = {
+            id: 2,
+            name: "Dreamhack",
+            joined: false,
+            location: "GBG",
+            time: "2022-02-14",
+            comments: ["kommentar", "en till"],
+        };
         render(<App />);
+        render(<Event event={testData} />);
 
         userEvent.click(screen.getAllByText("Join")[0]);
 
-        render(<App />);
+        render(<Event event={testData} />);
 
         const leaveButton2 = screen.getAllByText("Leave")[0];
         console.log(leaveButton2);

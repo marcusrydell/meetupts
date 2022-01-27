@@ -1,18 +1,24 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import Event from "../components/Event";
-import { IEvent } from "../model/Events";
+import userEvent from "@testing-library/user-event";
+import App from "../App";
 
-describe("Event component", () => {
-    it("render event without errors", () => {
-        const testData: IEvent = {
-            id: 2,
-            name: "test",
-            joined: true,
-            location: "GBG",
-            time: "2022-02-14",
-            comments: ["kommentar", "en till"],
-        };
-        render(<Event event={testData} />);
+describe("Modal component", () => {
+    it("opens modal", () => {
+        render(<App />);
+        userEvent.click(screen.getByText("Bilkrockar"));
+        const headerEl = screen.getByText("Comments");
+        expect(headerEl).toBeInTheDocument();
+    });
+    it("posts and renders a comment", () => {
+        render(<App />);
+        userEvent.click(screen.getByText("Bilkrockar"));
+        userEvent.type(
+            screen.getByPlaceholderText("Write a comment"),
+            "Test x32"
+        );
+        userEvent.click(screen.getByText("Add comment"));
+        const comment = screen.getByText("Test x32");
+        expect(comment).toBeInTheDocument();
     });
 });

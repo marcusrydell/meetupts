@@ -17,7 +17,6 @@ function Event({ event, updateParent }: any): JSX.Element {
                 <Button
                     fluid
                     color="red"
-                    data-testid="leave-btn"
                     onClick={() => updateParent(event.id)}
                 >
                     Leave

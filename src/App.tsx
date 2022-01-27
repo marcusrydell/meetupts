@@ -4,7 +4,7 @@ import style from "./styles/App.module.css";
 import { IEvent } from "./model/Events";
 import Modal from "./components/Modal";
 import { context } from "./context/Context";
-import { Button, Segment } from "semantic-ui-react";
+
 function App() {
     const [events, setEvents] = useState<IEvent[]>([
         {

@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { IEvent } from "../model/Events";
 import { context } from "../context/Context";
 import { Modal, Segment } from "semantic-ui-react";
@@ -13,10 +13,10 @@ function Modals({ id }: Props): JSX.Element {
     const [events, setEvents] = useState<IEvent[]>(
         JSON.parse(localStorage.getItem("events") || "")
     );
-    const index = events.findIndex(item => {
-        return item.id === id
-    })
-        
+    const index = events.findIndex((item) => {
+        return item.id === id;
+    });
+
     const [comments, setComments] = useState(events[index].comments); //Get from props
 
     function addComment(id: number) {
