@@ -4,7 +4,7 @@ import App from "../App";
 
 // User Story
 // Som användare vill jag kunna kommentera på varje möte
-describe("Event component", () => {
+describe("Comment modal", () => {
     it("opens comment modal", () => {
         render(<App />);
 
