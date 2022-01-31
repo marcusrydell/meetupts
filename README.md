@@ -21,9 +21,12 @@ Felix Linné
 ## Hur man kör
 Klona ner projktet
 ```git clone https://github.com/marcusrydell/meetupts.git```
+
 Installera dependencies
 ```npm install```
+
 Kör utvecklingsmiljön
 ```npm run start```
+
 Starta tester
 ```npm run test``` eller ```npm run test:coverage```
