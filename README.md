@@ -19,4 +19,11 @@ Felix Linné
 -   Som användare vill jag kunna se tidigare kommentarer
 
 ## Hur man kör
-npm run test
+Klona ner projktet
+```git clone https://github.com/marcusrydell/meetupts.git```
+Installera dependencies
+```npm install```
+Kör utvecklingsmiljön
+```npm run start```
+Starta tester
+```npm run test``` eller ```npm run test:coverage```
